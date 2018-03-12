@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6ca2a54-372f-4c1a-9db0-321fc53ed638">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     Cuenta.`nombre` AS Cuenta_nombre,
+     Detalle_Libro_Diario.`partida` AS Detalle_Libro_Diario_partida,
+     Detalle_Libro_Diario.`cargo` AS Detalle_Libro_Diario_cargo,
+     Detalle_Libro_Diario.`abono` AS Detalle_Libro_Diario_abono,
+     Libro_Diario.`fecha` AS Libro_Diario_fecha,
+     Libro_Diario.`descripcion` AS Libro_Diario_descripcion
+FROM
+     `Cuenta` Cuenta INNER JOIN `Detalle_Libro_Diario` Detalle_Libro_Diario ON Cuenta.`codigo` = Detalle_Libro_Diario.`codigo`
+     INNER JOIN `Libro_Diario` Libro_Diario ON Detalle_Libro_Diario.`partida` = Libro_Diario.`partida`]]>
+	</queryString>
+	<field name="Detalle_Libro_Diario_partida" class="java.lang.Integer"/>
+	<field name="Libro_Diario_fecha" class="java.lang.String"/>
+	<field name="Cuenta_nombre" class="java.lang.String"/>
+	<field name="Detalle_Libro_Diario_cargo" class="java.lang.Float"/>
+	<field name="Detalle_Libro_Diario_abono" class="java.lang.Float"/>
+	<field name="Libro_Diario_descripcion" class="java.lang.String"/>
+	<group name="partida">
+		<groupExpression><![CDATA[$F{Detalle_Libro_Diario_partida}]]></groupExpression>
+		<groupHeader>
+			<band height="53">
+				<staticText>
+					<reportElement x="1" y="12" width="56" height="20" uuid="66b3feb6-3adb-47ac-b891-d0425bee8c08"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Partida: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="63" y="12" width="44" height="20" uuid="6cb8f411-8fa1-462a-9d61-d10cbed6d8e9"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Detalle_Libro_Diario_partida}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="112" y="12" width="48" height="20" uuid="a4fee37b-cca9-4a9c-846d-cfc10e74e772"/>
+					<textElement>
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fecha: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="173" y="12" width="100" height="20" uuid="29d40a31-31be-4c54-a59d-4ac87a377efa"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Libro_Diario_fecha}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="32" width="305" height="20" uuid="35ca1aac-8a07-4107-a0cc-d8e2dc28e772"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cuenta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="305" y="32" width="125" height="20" uuid="ae099c1f-789b-45fe-a77d-cff18b579e28"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cargo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="430" y="32" width="125" height="20" uuid="ef5f15d8-f96a-469b-9a90-0301383a672d"/>
+					<textElement>
+						<font fontName="SansSerif" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Abono]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="51" width="555" height="1" uuid="136c34fc-5c5d-4e90-8996-9374a11b7db8"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="38">
+				<textField>
+					<reportElement x="73" y="11" width="430" height="20" uuid="ffb7d3be-8d68-479e-bceb-ea549010b4f7"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Libro_Diario_descripcion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="11" width="72" height="20" uuid="11c9fcae-4d8d-42df-a365-6d52a1a11aab"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Concepto: ]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="0" width="555" height="1" uuid="12d99286-8e24-43e4-903f-58cdda4b763b"/>
+				</line>
+				<line>
+					<reportElement x="0" y="37" width="555" height="1" uuid="2b403017-ee63-440e-8272-84e7a84dbbd4"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="53" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-22" y="-19" width="597" height="72" forecolor="#FFFFFF" backcolor="#E8EBEB" uuid="fd3b2783-015c-4458-a07d-ed1ea71bfb9a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="172" y="0" width="211" height="53" uuid="0bc7a067-93d6-49cc-85ca-6f9755a79fb8"/>
+				<textElement>
+					<font size="36" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Libro Diario]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="26" forecolor="#FFFFFF" backcolor="#E8EBEB" uuid="484f982e-759f-4185-82ba-bf71c417adfb"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="3" width="305" height="20" uuid="4387ece7-161d-414a-9b7e-b1b09cafd33e"/>
+				<textElement>
+					<font size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Cuenta_nombre}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="303" y="3" width="125" height="20" uuid="8229741b-e0b1-4299-bda0-8a6144afed13"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{Detalle_Libro_Diario_cargo}.floatValue() != new Float(0)? $F{Detalle_Libro_Diario_cargo} : new Object(""))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="428" y="3" width="125" height="20" uuid="0fb0a54b-70a9-480d-8e31-cb27ddabd320"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detalle_Libro_Diario_abono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

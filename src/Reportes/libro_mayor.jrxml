@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="409bb662-80c9-44ec-8233-55b594698bfc">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     Cuenta.`nombre` AS Cuenta_nombre,
+     Cuenta.`tipo_saldo` AS Cuenta_tipo_saldo,
+     Detalle_Libro_Diario.`cargo` AS Detalle_Libro_Diario_cargo,
+     Detalle_Libro_Diario.`abono` AS Detalle_Libro_Diario_abono,
+     Libro_Diario.`fecha` AS Libro_Diario_fecha,
+     Cuenta.`saldo` AS Cuenta_saldo
+FROM
+     `Cuenta` Cuenta INNER JOIN `Detalle_Libro_Diario` Detalle_Libro_Diario ON Cuenta.`codigo` = Detalle_Libro_Diario.`codigo`
+     INNER JOIN `Libro_Diario` Libro_Diario ON Detalle_Libro_Diario.`partida` = Libro_Diario.`partida`]]>
+	</queryString>
+	<field name="Cuenta_nombre" class="java.lang.String"/>
+	<field name="Cuenta_saldo" class="java.lang.Float"/>
+	<field name="Cuenta_tipo_saldo" class="java.lang.Integer"/>
+	<field name="Libro_Diario_fecha" class="java.lang.String"/>
+	<field name="Detalle_Libro_Diario_cargo" class="java.lang.Float"/>
+	<field name="Detalle_Libro_Diario_abono" class="java.lang.Float"/>
+	<group name="Cuenta_nombre">
+		<groupExpression><![CDATA[$F{Cuenta_nombre}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
